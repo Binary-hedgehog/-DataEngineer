@@ -1,6 +1,6 @@
 # Подготовка к собеседованию для Spark Data Engineer
 Оглавление
-+ [Lalal](##SQL)
++ [Lalal](##Sql)
 ## Spark
 ### Структура Spark
 ### Spark Core
