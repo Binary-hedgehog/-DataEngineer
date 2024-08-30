@@ -1,6 +1,6 @@
 # Подготовка к собеседованию для Spark Data Engineer
 Оглавление
-+ [Spark](https://github.com/Binary-hedgehog/-DataEngineer/edit/main/README.md#sql)
++ [Lalal](##SQL)
 ## Spark
 ### Структура Spark
 ### Spark Core
