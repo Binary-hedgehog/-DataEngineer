@@ -1,5 +1,4 @@
 # Подготовка к собеседованию для Spark Data Engineer
-[Go Back](#оглавление)
 ## Оглавление
 + [Spark](#spark)
   + [Spark Core](#spark-core)
