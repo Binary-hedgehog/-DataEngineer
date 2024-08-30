@@ -1,6 +1,6 @@
 # Подготовка к собеседованию для Spark Data Engineer
 Оглавление
-+ [SQL](README.md##Sql)
++ [SQL](#sql)
 ## Spark
 ### Структура Spark
 ### Spark Core
