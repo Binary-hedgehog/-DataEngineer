@@ -20,6 +20,9 @@
   + [Алгоритмы](#алгоритмы)
   + [Тестирование](#Тестирование)
   + [Алгоритмы кластеризации](#алгоритмы-кластеризации)
+  + [Docker](#Docker)
+  + [Kubernets](#Kubernets)
++ [Справочные материалы](#Справочные-материалы)
 ## Spark
 * Структура Spark
 ### Spark Core
@@ -339,7 +342,9 @@
   * `Послойная кластеризация`
 * Ссылка на статью - https://habr.com/ru/articles/101338/
 ### Docker
-### kubernets 
+[Go Back](#оглавление)
+### Kubernets 
+[Go Back](#оглавление)
 # Справочные материалы
 [Go Back](#оглавление)
 * https://github.com/OBenner/data-engineering-interview-questions/blob/master/content/spark.md
