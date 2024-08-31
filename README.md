@@ -3,25 +3,25 @@
 * [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)
 ## Оглавление
 + [Spark](#spark)  -- todo
-  + [Spark Core](#spark-core)
+  + [Spark Core](#spark-core)  
   + [Spark SQL](#spark-sql)
   + [Spark Catalist](#spark-catalist)
-+ [SQL](#sql)
-+ [Оркестраторы](#оркестраторы)
++ [SQL](#sql)  -- todo
++ [Оркестраторы](#оркестраторы)  -- todo
 + [GIT](#git)
 + [Прочие полезности Big Data](#прочие-полезности)
   + [Hadoop](#hadoop)
-  + [Kafka](#Kafka)
-  + [Flink](#Flink)
-  + [Хранилища](#Хранилища)
+  + [Kafka](#Kafka)  -- todo
+  + [Flink](#Flink)  -- todo
+  + [Хранилища](#Хранилища)  -- todo
   + [Форматы данных в BigData](#Форматы-данных-в-BigData)
 + [Про разработку](#Про-разработку)
   + [Принципы разработки](#принципы-разработки)
   + [Алгоритмы](#алгоритмы)
   + [Тестирование](#Тестирование)
   + [Алгоритмы кластеризации](#алгоритмы-кластеризации)
-  + [Docker](#Docker)
-  + [Kubernetes](#Kubernetes)
+  + [Docker](#Docker)  -- todo
+  + [Kubernetes](#Kubernetes)  -- todo
 + [Справочные материалы](#Справочные-материалы)
 ## Spark
 * Структура Spark
