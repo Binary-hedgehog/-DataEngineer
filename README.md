@@ -2,7 +2,7 @@
 * [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)
 * [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)
 ## Оглавление
-+ [Spark](#spark)
++ [Spark](#spark)  -- todo
   + [Spark Core](#spark-core)
   + [Spark SQL](#spark-sql)
   + [Spark Catalist](#spark-catalist)
