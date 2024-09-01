@@ -380,7 +380,7 @@
 ### Kubernetes 
 [Go Back](#оглавление)
 # Источники
-[Go Back](#Источники)
+[Go Back](#оглавление)
 * https://github.com/OBenner/data-engineering-interview-questions/blob/master/content/spark.md
 * https://github.com/yakimka/python_interview_questions/blob/master/questions.md/#Python
 * https://habr.com/ru/companies/kuper/articles/738634/
