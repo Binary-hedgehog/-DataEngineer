@@ -18,6 +18,7 @@
 * [ООП](#ООП)
     * [Магические методы](#Магические-методы)
     * [Наследование](#Наследование)
+    * [Singleton](#Singleton)
 * [Дескрипторы](#Дескрипторы)
 * [Метаклассы](#Метаклассы)
 * [Память](#Память)
@@ -177,6 +178,23 @@ A()._A__b  # опять не выдаст ошибку
     * Сначала экземпляр
     * Затем его класс
     * Далее все суперклассы его класса с обходом сначала с глубину, а затем слева направо
+### Singleton
+* Это класс, который создается единожды и не создает новых объектов себя при повторной инициализации
+* Есть много способов создать Singleton объект, один из примеров ниже
+``` Python
+class Singleton(object):
+    _instance = None
+    def __new__(class_, *args, **kwargs):
+        if not isinstance(class_._instance, class_):
+            class_._instance = object.__new__(class_, *args, **kwargs)
+        return class_._instance
+
+class MyClass(Singleton, BaseClass):
+    pass
+```
+* Однако, из личного опыта есть определенный нюанс
+    * Когда синглтон является родителем для какого-то класса, как в примере выше, то он будет создаваться каждый раз и утеряет свою синглтоновость.
+    * Так что концепция Singleton в Python не особо имеет место быть, когда дело касается наследования
 ## Дескрипторы
 [Go Back](#оглавление)
 * Это способ, с помощью которого объект может контролировать доступ к его атрибутам, используя специально определенные методы `__get__`, `__set__`, и `__delete__`
@@ -215,3 +233,4 @@ A()._A__b  # опять не выдаст ошибку
 * https://github.com/yakimka/python_interview_questions/blob/master/questions.md/#Python
 * https://habr.com/ru/companies/ruvds/articles/747084/
 * https://habr.com/ru/companies/otus/articles/801595/
+* https://stackoverflow.com/questions/6760685/what-is-the-best-way-of-implementing-singleton-in-python
