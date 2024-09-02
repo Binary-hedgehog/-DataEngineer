@@ -186,19 +186,20 @@ A()._A__b  # опять не выдаст ошибку
 * Это класс, который создается единожды и не создает новых объектов себя при повторной инициализации
 * Есть много способов создать Singleton объект, один из примеров ниже
 ``` Python
-class Singleton(object):
-    _instance = None
-    def __new__(class_, *args, **kwargs):
-        if not isinstance(class_._instance, class_):
-            class_._instance = object.__new__(class_, *args, **kwargs)
-        return class_._instance
+class Singleton(type):
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
-class MyClass(Singleton, BaseClass):
+class MyClass(BaseClass, metaclass=Singleton):
     pass
 ```
 ## Дескрипторы
 [Go Back](#оглавление)
 * Это способ, с помощью которого объект может контролировать доступ к его атрибутам, используя специально определенные методы `__get__`, `__set__`, и `__delete__`
+* Дескрипторы помогают решить проблему Python с инкапсуляцией
 * `property` как раз работает как дескриптор 
 ## Метаклассы
 [Go Back](#оглавление)
@@ -297,8 +298,6 @@ class MyClass(Singleton, BaseClass):
         * black
 * Начиная с Python 3.6 всем объектам можно аннотировать тип. Для этого надо импортировать `typing`
     * Таким образом можно закрыть некоторые проблемы языка с динамической типизацией
-[Go Back](#оглавление)
-
 ## Источники
 [Go Back](#оглавление)
 * https://github.com/yakimka/python_interview_questions/blob/master/questions.md/#Python
