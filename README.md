@@ -1,5 +1,5 @@
 # Подготовка к собеседованию для Spark Data Engineer
-* [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)  -- todo
+* [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)
 * [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)  -- todo
 ## Оглавление
 + [Spark](#spark)  -- todo
