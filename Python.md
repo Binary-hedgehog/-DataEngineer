@@ -174,7 +174,11 @@ finally:
 ---
 ## ООП
 [Go Back](#оглавление)
-* Python придерживается основных парадигм ООП - абстракция, наследование, полиморфизм, инкапсуляция
+* Python придерживается основных парадигм ООП -
+    * Абстракция
+    * Наследование
+    * Полиморфизм
+    * Инкапсуляция
 * Однако инкапсуляция условная
 ```python
 class A:
@@ -214,15 +218,63 @@ class MyClass(BaseClass, metaclass=Singleton):
 ---
 ## Дескрипторы
 [Go Back](#оглавление)
-* Это способ, с помощью которого объект может контролировать доступ к его атрибутам, используя специально определенные методы `__get__`, `__set__`, и `__delete__`
+* Это объектовый атрибут с поведением, определяемым методами в его классе, или если проще - это способ, с помощью которого объект может контролировать доступ к его атрибутам, используя специально определенные методы `__get__`, `__set__`, и `__delete__`
+* `__get__`
+    * Вызывается, когда значение атрибута извлекается
+    * Принимает два агрумента: `self` и `instance`, где `instance` - это экземпляр объекта, через который доступен дескриптор, или `None`, если обращение идет через класс
+``` Pyhton
+class Descriptor:
+    def __get__(self, instance, owner):
+        return 'значение'
+
+class MyClass:
+    attr = Descriptor()
+
+my_object = MyClass()
+print(my_object.attr)  # выведет 'значение'
+```
+* `__set__`
+    * Позволяет управлять изменением значения атрибута
+    * Принимает три аргумента: `self`, `instance` и `value`, где `value` - это новое значение атрибута
+``` Pyhton
+class Descriptor:
+    def __set__(self, instance, value):
+        print(f"Установка значения {value}")
+        self.__value = value
+
+class MyClass:
+    attr = Descriptor()
+
+my_object = MyClass()
+my_object.attr = 10  # выведет 'Установка значения 10'
+```
+* `__delete__` вызывается при удалении атрибута с использованием оператора
+  * Принимает два агрумента: `self` и `instance`
+``` Pyhton
+class Descriptor:
+    def __delete__(self, instance):
+        print("Удаление атрибута")
+        del self.__value
+
+class MyClass:
+    attr = Descriptor()
+
+my_object = MyClass()
+del my_object.attr  # выведет 'Удаление атрибута'
+```
 * Дескрипторы помогают решить проблему Python с инкапсуляцией
-* `property` как раз работает как дескриптор
-* Тут можно посмотреть примеры - https://habr.com/ru/companies/otus/articles/801595/
+* `property()` как раз работает как дескриптор
+* Тут можно посмотреть подробнее - https://habr.com/ru/companies/otus/articles/801595/
 ---
 ## Метаклассы
 [Go Back](#оглавление)
 * Метаклассы - классы, создающие классы
 * `type` - это метакласс, который Питон внутренне использует для создания всех классов
+    * `type(obj)` с одним аргументом возвращает объект класса аргумента `obj.__class__`
+    * `type(name, bases, dict)` с тремя аргументами он создает новый класс
+        * _name_ - имя нового класса
+        * _bases_ - кортеж с родительскими классами
+        * _dict_ - словать с пространством имен класс (то есть какая-то переменная и её значение)
 ---
 ## Память
 [Go Back](#оглавление)
@@ -338,3 +390,4 @@ class MyClass(BaseClass, metaclass=Singleton):
 * https://stackoverflow.com/questions/6760685/what-is-the-best-way-of-implementing-singleton-in-python
 * https://habr.com/ru/articles/264609/
 * https://pythonchik.ru/osnovy/kak-rabotaet-python-interpretator
+* https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/klass-type/
