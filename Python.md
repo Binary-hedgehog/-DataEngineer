@@ -180,7 +180,7 @@ class MyClass:
     def __init__(self):
         self._value = None
  
-    @property
+    @property  # по факту это getter
     def value(self):
         return self._value
  
