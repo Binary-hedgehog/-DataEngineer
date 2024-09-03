@@ -146,11 +146,52 @@
 ### Популярные декораторы
 * `@classmethod`
     * Позволяет функции использовать атрибуты класса, а не атрибуты экземпляра класса, в котором был вызван
+``` Python
+class A:
+    a = 2
+
+    def foo1(self):
+        print(self.a)
+
+    @classmethod
+    def foo2(cls):
+        print(cls.a)
+
+b = A()
+b.a = 3
+b.foo1()  # 3
+b.foo2()  # 2
+```
 * `@staticmethod`
     * Функция, которая ничего не знает о классе или экземпляре класса и может быть вызвана без инициализации класса
+``` Python
+class A:
+    @staticmethod
+    def foo(x):
+        print(x)
+
+A.foo(7)  # 7 - без инициализации класса
+```
 * `@property`
     * Позволяет выстроить корректную инкапсуляцию в классе
     * Позволяет определить `getter`, `setter`, `deleter`
+``` Python
+class MyClass:
+    def __init__(self):
+        self._value = None
+ 
+    @property
+    def value(self):
+        return self._value
+ 
+    @value.setter
+    def value(self, value):
+        self._value = value
+ 
+    @value.deleter
+    def value(self):
+        del self._value
+```
 ---
 ## Исключения
 [Go Back](#оглавление)
