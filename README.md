@@ -24,14 +24,23 @@
   + [Kubernetes](#Kubernetes)  -- todo
 + [Источники](#Источники)
 ## Spark
+* Apache Spark — это фреймворк для обработки и анализа больших объёмов информации, входящий в инфраструктуру Hadoop. * Поддерживает такие языки программирования как Scala, Java, Python, R и SQL
+* Обработка данных в оперативной памяти позволяет значительно ускорить выполнение программы относительно MapReduce
+* Lazy
+* Параллелизим
 * Структура Spark
+![Структура Spark](https://habrastorage.org/getpro/habr/upload_files/289/a96/15b/289a9615bb238133ebb9a35940b1fece.png)
+* Spark состоит из 5 компонентов **Spark Core**, **Spark SQL**, **Spark Streaming**, **MLlib**, **GraphX**
+### Cluster Manager
+* Занимается управлением реальными машинами кластера и контролирует выделение ресурсов (он же ресурсный менеджер)
+* Виды: **Standalone cluster**, **Apache Mesos** и **YARN**
 ### Spark Core
 [Go Back](#оглавление)
 * Включает функции управления памятью, а также восстановлению в случае аварий, планирования задач в кластере и взаимодействие с хранилищем
 ### Spark SQL 
 [Go Back](#оглавление)
 * Механизм запросов SQL, который поддерживает различные источники данных и использует такую структуру данных, как DataFrame
-#### Spark Catalist
+#### Spark Catalyst Optimizer 
 [Go Back](#оглавление)
 * Catalyst — оптимизатор запросов
 * Операции, которые вы можете выполнять в приложении Spark, делятся на два типа
@@ -415,3 +424,4 @@
 * https://github.com/OBenner/data-engineering-interview-questions/blob/master/content/spark.md
 * https://github.com/yakimka/python_interview_questions/blob/master/questions.md/#Python
 * https://habr.com/ru/companies/kuper/articles/738634/
+* https://habr.com/ru/articles/828984/
