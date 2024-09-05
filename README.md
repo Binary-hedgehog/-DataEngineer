@@ -7,7 +7,7 @@
   + [Spark Application](#Spark-Application)
   + [Основные компоненты Spark](#Основные-компоненты-Spark)
   + [Оптимизация в Spark](#Оптимизация-в-Spark)
-  + [Ect](#Ect)
+  + [Ect](#Ect) -- todo
 + [SQL](#sql)  -- todo
 + [Оркестраторы](#оркестраторы)
 + [GIT](#git)
