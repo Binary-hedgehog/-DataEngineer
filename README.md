@@ -3,7 +3,7 @@
 * [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)  -- todo
 ## Оглавление
 + [Spark](#spark)
-  + [Структуры данных в Spark](#Структуры-данных-в-Spark)
+  + [Структуры данных в Spark](#Структуры-данных-в-Spark)  -- todo
   + [Spark Application](#Spark-Application)
   + [Основные компоненты Spark](#Основные-компоненты-Spark)
   + [Оптимизация в Spark](#Оптимизация-в-Spark)
@@ -52,7 +52,7 @@
 * Можно создать из RDD
     * Обратная же конвертация создаст **новый** RDD объект 
 * Data source API позволяет обрабатывать разные форматы файлов (AVRO, CSV, JSON, а также из систем хранения HDFS, HIVE таблиц, MySQL)
-#### DataSet
+#### DataSet  -- todo
 * Это набор записей типа Row (колонка), разбитых на блоки
 * Функционал Spark позволяет преобразовывать как RDD так и DataFrame в сам DataSet
 * Dataset API также поддерживает различные форматы данных
