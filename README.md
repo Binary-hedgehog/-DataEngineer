@@ -160,6 +160,13 @@
 * Плюсы Spark 
   * Spark выполняет обработку данных в памяти и, по сути, почти не обращается к диску
   * В Spark существует API для различных языков программирования, в результате чего писать код заметно проще
+#### Файловые системы, поддерживаемые Spark
+* HDFS
+* Amazon S3
+* Local File System
+* Cassandra
+* OpenStack Swift
+* MapR File System
 #### UDF 
 ##### Scala udf
 ##### Python udf
