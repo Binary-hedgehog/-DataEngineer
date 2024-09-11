@@ -1,6 +1,7 @@
 # Подготовка к собеседованию для Spark Data Engineer
 * [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)
 * [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)  -- todo
+* [Вопросы работодателю](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BE%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8E.md)
 ## Оглавление
 + [Spark](#spark)
   + [Структуры данных в Spark](#Структуры-данных-в-Spark)  -- todo
