@@ -40,6 +40,7 @@
 ![Структура Spark](https://habrastorage.org/getpro/habr/upload_files/289/a96/15b/289a9615bb238133ebb9a35940b1fece.png)
 ### Структуры данных в Spark
 [Go Back](#оглавление)
+* Про сравнение основных структур можно почтитать тут в П.4 https://sparkbyexamples.com/spark/spark-rdd-vs-dataframe-vs-dataset/
 #### RDD - Resilient Distributed Dataset
 * Это определенный набор объектов, разбитых на блоки partitions
     * Partitions могут храниться на разных узлах кластера
