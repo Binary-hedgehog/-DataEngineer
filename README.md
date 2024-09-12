@@ -227,7 +227,7 @@ import pandas as pd
 def to_upper(s: pd.Series) -> pd.Series:
     return s.str.upper()
 
-df.select("Seqno","Name",to_upper("Name"))
+df.select("Seqno", "Name", to_upper("Name"))
 ```
 ##### Scala udf в PySpark
 * Пример того как на Python использовать Scala Udf для PySpark
@@ -241,7 +241,7 @@ def square(s):
 spark.udf.register("squareWithPython", square)
 spark.sql("select id, squareWithPython(id) as id_square_sql from test")
 sqlContext = SQLContext(spark.sparkContext)
-spark._jvm.com.databricks.solutions.udf.Functions.registerFunc(sqlContext._jsqlContext,"cube")
+spark._jvm.com.databricks.solutions.udf.Functions.registerFunc(sqlContext._jsqlContext, "cube")
 spark.sql("select id, cube(id) as id_cube_sql_scala from test")
 
 ```
