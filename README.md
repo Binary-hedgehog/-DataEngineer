@@ -242,7 +242,7 @@ spark.udf.register("squareWithPython", square)
 spark.sql("select id, squareWithPython(id) as id_square_sql from test")
 sqlContext = SQLContext(spark.sparkContext)
 spark._jvm.com.databricks.solutions.udf.Functions.registerFunc(sqlContext._jsqlContext,"cube")
-spark.sql("select id, cube(id) as id_cube_sql_scala from test").show()
+spark.sql("select id, cube(id) as id_cube_sql_scala from test")
 
 ```
 ---
