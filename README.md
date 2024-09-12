@@ -8,7 +8,7 @@
   + [Spark Application](#Spark-Application)
   + [Основные компоненты Spark](#Основные-компоненты-Spark)
   + [Оптимизация в Spark](#Оптимизация-в-Spark)
-  + [Ect](#Ect) -- todo
+  + [Ect](#Ect)
 + [SQL](#sql)  -- todo
 + [Оркестраторы](#оркестраторы)
 + [GIT](#git)
@@ -182,10 +182,69 @@
 * OpenStack Swift
 * MapR File System
 #### UDF 
-* 
+* Пользовательские функции, которые позволяют расширять DataFrame API
+* Методы UDF в Spark
+    * asNonNullable() – обновляет UDF до значения, не допускающего NULL
+    * asNondeterministic() – обновляет UDF до недетерминированного значения
+    * withName(name: String) – обновляет UDF с заданным именем
 ##### Scala udf
+* Пример того как на Scala использовать Udf для Spark
+``` Scala
+import org.apache.spark.sql.functions.{col, udf}
+import org.apache.spark.sql.{SparkSession => spark}
+
+val random = udf(() => Math.random())
+spark.udf.register("random", random.asNondeterministic())
+spark.sql("Select random()")
+
+val squared = udf((s: Long) => s * s)
+dataFrame.select(squared(col("id")) as "id_squared"))
+```
 ##### Python udf
+* Пример того как на Python использовать Udf для PySpark
+``` Python
+from pyspark.sql.functions import col, udf
+from pyspark.sql.types import StringType
+
+def upperCase(str):
+    return str.upper()
+
+upperCaseUDF = udf(lambda s: upperCase(s), StringType())
+df.withColumn("Cureated Name", upperCaseUDF(col("Name")))
+
+spark.udf.register("upperCase", upperCase, StringType())
+spark.sql("select some, upperCase(Name) as UpName from NAME_TABLE") 
+```
 ##### Pandas udf
+* Пример того как на Python использовать Pandas Udf для PySpark
+``` Python
+from pyspark.sql.functions import pandas_udf
+from pyspark.sql.types import StringType
+import pandas as pd
+
+# Для Spark 3.0+
+@pandas_udf(StringType())
+def to_upper(s: pd.Series) -> pd.Series:
+    return s.str.upper()
+
+df.select("Seqno","Name",to_upper("Name"))
+```
+##### Scala udf в PySpark
+* Пример того как на Python использовать Scala Udf для PySpark
+``` Python
+from my_udf.functions import square
+from pyspark.sql import SparkSession, SQLContext
+
+def square(s):
+  return s * s
+
+spark.udf.register("squareWithPython", square)
+spark.sql("select id, squareWithPython(id) as id_square_sql from test")
+sqlContext = SQLContext(spark.sparkContext)
+spark._jvm.com.databricks.solutions.udf.Functions.registerFunc(sqlContext._jsqlContext,"cube")
+spark.sql("select id, cube(id) as id_cube_sql_scala from test").show()
+
+```
 ---
 ## SQL
 [Go Back](#оглавление)
