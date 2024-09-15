@@ -40,7 +40,6 @@
 ![Структура Spark](https://habrastorage.org/getpro/habr/upload_files/289/a96/15b/289a9615bb238133ebb9a35940b1fece.png)
 ### Структуры данных в Spark
 [Go Back](#оглавление)
-* Про сравнение основных структур можно почтитать тут в П.4 https://sparkbyexamples.com/spark/spark-rdd-vs-dataframe-vs-dataset/
 #### RDD - Resilient Distributed Dataset
 * Это определенный набор объектов, разбитых на блоки partitions
     * Partitions могут храниться на разных узлах кластера
@@ -70,6 +69,26 @@
     * Это позволяет выполнить операцию с сериализованными данными, эффективно используя память, т.к. предоставляется доступ к индивидуальному атрибуту по требованию без десериализации всего объекта
 * Функционал Spark позволяет преобразовывать как RDD так и DataFrame в сам DataSet
 * Dataset API также поддерживает различные форматы данных
+### Сравнение
+* RDDs are the most basic and low-level API, providing more control over the data but with lower-level optimizations
+* DataFrames provide a higher-level API that is optimized for performance and easier to work with for structured data
+* Datasets are similar to DataFrames in performance but with stronger typing and code generation, making them a good choice for high-performance batch and stream processing with strong typing
+
+| Context | RDD | DataFrame | Dataset | 
+| ------- | --- | --------- | ------- |
+| Interoperability | Can be easily converted to DataFrames and vice versa using the `toDF()` and `rdd()` methods | Can be easily converted to RDDs and Datasets using the `rdd()` and `as[]` methods respectively | Can be easily converted to DataFrames using the `toDF()` method, and to RDDs using the `rdd()` method |
+| Type safety | Not type-safe | DataFrames are not type-safe, When we are trying to access the column which does not exist in the table in such case Dataframe APIs does not support compile-time error. It detects attribute errors only at runtime | Datasets are type-safe, Datasets provide compile-time type checking, which helps catch errors early in the development process. DataFrames are schema-based, meaning that the structure of the data is defined at runtime and is not checked until runtime |
+| Performance | Low-level API with more control over the data, but lower-level optimizations compared to DataFrames and Datasets | Optimized for performance, with high-level API, Catalyst optimizer, and code generation | Datasets are faster than DataFrames because they use JVM bytecode generation to perform operations on data. This means that Datasets can take advantage of the JVM’s optimization capabilities, such as just-in-time (JIT) compilation, to speed up processing |
+| Memory Management | Provide full control over memory management, as they can be cached in memory or disk as per the user’s choice | Have more optimized memory management, with a Spark SQL optimizer that helps to reduce memory usage | This binary structure often has much lower memory footprint as well as are optimized for efficiency in data processing |
+| Serialization | Whenever Spark needs to distribute the data within the cluster or write the data to disk, it does so use Java serialization. The overhead of serializing individual Java and Scala objects is expensive and requires sending both data and structure between nodes | DataFrames use a generic encoder that can handle any object type | Datasets are serialized using specialized encoders that are optimized for performance |
+| APIs | Provide a low-level API that requires more code to perform transformations and actions on data | Provide a high-level API that makes it easier to perform transformations and actions on data | Datasets provide a richer set of APIs. Datasets support both functional and object-oriented programming paradigms and provide a more expressive API for working with data |
+| Schema enforcement | Do not have an explicit schema, and are often used for unstructured data | DataFrames enforce schema at runtime. Have an explicit schema that describes the data and its types | Datasets enforce schema at compile time. With Datasets, errors in data types or structures are caught earlier in the development cycle. Have an explicit schema that describes the data and its types, and is strongly typed |
+| Programming Language Support | RDD APIs are available in Java, Scala, Python, and R languages. Hence, this feature provides flexibility to the developer | Available In 4 languages like Java, Python, Scala, and R | Only available in Scala and Java |
+| Optimization | No inbuilt optimization engine is available in RDD | It uses a catalyst optimizer for optimization | It includes the concept of a Dataframe Catalyst optimizer for optimizing query plans |
+| Data types | Suitable for structured and semi-structured data processing with a higher level of abstraction |  DataFrames supports most of the available dataTypes | Datasets support all of the same data types as DataFrames, but they also support user-defined types. Datasets are more flexible when it comes to working with complex data types |
+| Use Cases | Suitable for low-level data processing and batch jobs that require fine-grained control over data |  Suitable for structured and semi-structured data processing with a higher-level of abstraction | Suitable for high-performance batch and stream processing with strong typing and functional programming |
+
+
 ### Spark Application
 [Go Back](#оглавление)
 * Приложения Spark включают в себя программу драйвера и исполнителей и запускают различные параллельные операции в кластере 
@@ -701,3 +720,4 @@ Data Lake не имеют схемы и более гибки для хране�
 * https://bigdataschool.ru/blog/rdd-vs-dataframe-vs-dataset.html
 * https://habr.com/ru/articles/253877/
 * https://habr.com/ru/articles/258443/
+* https://sparkbyexamples.com/spark/spark-rdd-vs-dataframe-vs-dataset/
