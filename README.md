@@ -9,7 +9,6 @@
   + [Основные компоненты Spark](#Основные-компоненты-Spark)
   + [Оптимизация в Spark](#Оптимизация-в-Spark)
   + [Ect](#Ect)
-+ [SQL](#sql)  -- todo
 + [Оркестраторы](#оркестраторы)
 + [GIT](#git)
 + [Прочие полезности Big Data](#прочие-полезности)
@@ -87,7 +86,6 @@
 | Optimization | No inbuilt optimization engine is available in RDD | It uses a catalyst optimizer for optimization | It includes the concept of a Dataframe Catalyst optimizer for optimizing query plans |
 | Data types | Suitable for structured and semi-structured data processing with a higher level of abstraction |  DataFrames supports most of the available dataTypes | Datasets support all of the same data types as DataFrames, but they also support user-defined types. Datasets are more flexible when it comes to working with complex data types |
 | Use Cases | Suitable for low-level data processing and batch jobs that require fine-grained control over data |  Suitable for structured and semi-structured data processing with a higher-level of abstraction | Suitable for high-performance batch and stream processing with strong typing and functional programming |
-
 
 ### Spark Application
 [Go Back](#оглавление)
@@ -267,45 +265,6 @@ spark._jvm.com.databricks.solutions.udf.Functions.registerFunc(sqlContext._jsqlC
 spark.sql("select id, cube(id) as id_cube_sql_scala from test")
 
 ```
----
-## SQL
-[Go Back](#оглавление)
-аналитические функции, подзапросы, хранимые процедуры, оптимизация производительности
-### Joinы (тут инфы чуть больше чем в обычном Sql, так как spark рулит)
-* Self-join в SQL – это тип операции соединения, при которой таблица объединяется сама с собой
-* Виды Join
-  * Left (Left Outer) - оставляет все из левой таблицы, добавляет туда то, что нашел в правой. Несцепленные строки из левой заполняет null в колонках правой
-  * Right (Right Outer) - аналог Left, но работает в другую сторону
-  * Inner - оставляет то, что сцепилось из левой и правой таблицы
-  * Full (Full Outer) - сцепляет все что можно слева и спава, остальное в null, все как мы привыкли, в итоге получим все
-  * Cross - все на все, умножаем поля слева на поля справа (с точки зрения результирующего количества полей)
-  * Semi (Left/Right) - оставляет только то из левой таблицы, что нашлось в правой
-  * Anti (Left/Right) - оставляет только то из левой таблицы, что **НЕ** нашлось в правой
-* Механизмы Join
-  * Broadcast Hash Join
-    * Одна таблица транслируется всем исполнителям, для каждого из которых строится хэш таблица
-    * Далее они начинают соединяться без перетасовки
-    * Требует много памяти
-  * Shuffle Hash Join
-    * Две таблицы выравниваются по схеме партиционирования (либо перемешиваются до похожести)
-    * Далее базовый Hash Join (хэш таблица строится, начиная от меньшей по размеру)
-    * Меньшее требование к памяти нежели у Broadcast Hash Join (из-за того, что таблица над меньшим объемом данных)
-  * Sort Merge Join
-    * Shuffle на минималках, для тех, кому жалко ресурсы
-  * Cartesian Join - Декартово соединение
-    * Используется исключительно для выполнения перекрестного (Cross) соединения между двумя наборами входных данных
-  * Broadcast Nested Loop Join
-    * Входной набор транслируется на всех
-    * А дальше целиком
-    * Лучше такое не делать, конечно  
-### Оконки
-### Всякие СУБД под SQL
-#### Greenplam
-* Надстройка над PostgresSql для работы с BigData
-#### Casandra
-* Это нереляционная отказоустойчивая распределенная СУБД, рассчитанная на создание высокомасштабируемых и надёжных хранилищ огромных массивов данных, представленных в виде хэша
-#### ClickHouse
-* Cтолбцовая система управления базами данных (СУБД) для онлайн-обработки аналитических запросов (OLAP)
 ---
 ## Оркестраторы
 [Go Back](#оглавление)
