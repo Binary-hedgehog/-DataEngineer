@@ -213,7 +213,7 @@
     * asNondeterministic() – обновляет UDF до недетерминированного значения
     * withName(name: String) – обновляет UDF с заданным именем
 ##### Scala udf
-* Пример того как на Scala использовать Udf для Spark
+* Пример того как на Scala написать и использовать Udf для Spark
 ``` Scala
 import org.apache.spark.sql.functions.{col, udf}
 import org.apache.spark.sql.{SparkSession => spark}
@@ -226,7 +226,7 @@ val squared = udf((s: Long) => s * s)
 dataFrame.select(squared(col("id")) as "id_squared"))
 ```
 ##### Python udf
-* Пример того как на Python использовать Udf для PySpark
+* Пример того как на Python написать и использовать Udf для PySpark
 ``` Python
 from pyspark.sql.functions import col, udf
 from pyspark.sql.types import StringType
@@ -241,7 +241,7 @@ spark.udf.register("upperCase", upperCase, StringType())
 spark.sql("select some, upperCase(Name) as UpName from NAME_TABLE") 
 ```
 ##### Pandas udf
-* Пример того как на Python использовать Pandas Udf для PySpark
+* Пример того как на Python написать и использовать Pandas Udf для PySpark
 ``` Python
 from pyspark.sql.functions import pandas_udf
 from pyspark.sql.types import StringType
@@ -255,7 +255,7 @@ def to_upper(s: pd.Series) -> pd.Series:
 df.select("Seqno", "Name", to_upper("Name"))
 ```
 ##### Scala udf в PySpark
-* Пример того как на Python использовать Scala Udf для PySpark
+* Пример того как на Python написать и использовать Scala Udf для PySpark
 ``` Python
 from my_udf.functions import square
 from pyspark.sql import SparkSession, SQLContext
