@@ -1,5 +1,4 @@
 # Подготовка к собеседованию по Python
-
 ## Оглавление
 * [Python](#Python)
 * [Типы данных](#Типы-данных)
@@ -32,6 +31,13 @@
 * [Либы](#Либы)
 * [Линтеры и аннотация типов](#Линтеры-и-аннотация-типов)
 * [Источники](#Источники)
+---
+## Другие файлы
+* [Spark](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Spark.md)
+* [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)  -- todo
+* [SQL](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/SQL.md)
+* [Общие темы](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Common.md)
+* [Вопросы работодателю](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Questions%20for%20employer.md)
 ---
 ## Python
 [Go Back](#оглавление)
