@@ -299,6 +299,7 @@ GROUP BY store, book;
 * Cтолбцовая система управления базами данных (СУБД) для онлайн-обработки аналитических запросов (OLAP)
 ---
 ## Задачки
+[Go Back](#оглавление)
 * https://tproger.ru/articles/sql-interview-questions
 * https://proglib.io/p/sql-questions
 ---
