@@ -1,4 +1,5 @@
 # Репозиторий предназначенный для помощи в подготовке Data Engineer к собеседовниям
+## Представленные темы:
 ### [Spark](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Spark.md)
 ### [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)
 ### [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)  -- todo
