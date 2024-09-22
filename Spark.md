@@ -17,7 +17,7 @@
 ---
 ## Другие файлы
 * [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)
-* [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)  -- todo
+* [Scala](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Scala.md)
 * [SQL](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/SQL.md)
 * [Общая информация](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Common.md)
 * [Вопросы работодателю](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Questions%20for%20employer.md)
