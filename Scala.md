@@ -58,6 +58,7 @@ class SomeOtherClass(x: String) extends SomeClass {
 ## Pattern matching
 ## Given
 ## Пакеты
+* Predef
 
 
 ## Дополниетльные вопросы
