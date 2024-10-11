@@ -1,13 +1,14 @@
 # Подготовка к собеседованию по Scala
 
 ## Типы переменных
+* mutable, imutable
+
 * val - переменная данного типа инициализируется в начале работы программы и **не может** изменяться
 * lazy val - переменная данного типа инициализируется в момент первого обращения к ней и **не может** изменяться
 * var - переменная данного типа инициализируется в начале работы программы и **может** изменяться
 * def - переменная данного типа инициализируется каждый раз при её вызове
 ---
-## Типы данных -- TODO
-* mutable, imutable
+## Типы данных
 ### Основные типы
 #### Числовые
 * Byte
@@ -23,20 +24,27 @@
 * Boolean
 * Unit '()'
 ### Коллекции
-
-
-
 * Any, Any val, Any seq, Nothing, Коллекции, 
 * Множества, отображения
 ---
 ## ООП
+наследование?
 ### class
 * Классы - это шаблоны объектов
 ``` Scala
-class SomeClass
-val a = new SomeClass() // без () в Scala 3
-class SomeOtherClass(x: String) extends SomeClass {
-  require( x != "" ) // функция объекта Predef, которая автоматически импортируется в каждый пакет Scala
+class TempClass1
+class TempClass2(y: Int)
+val a = new TempClass1() // Инициализация класса, в Scala 3 без ()
+
+class SomeClass {
+  def str: String = ""
+}
+class SomeOtherClass(val x: String) extends SomeClass { // 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)
+  require( x != "" ) // функция объекта Predef, которая устанавливает требования к инициализации класса переменной
+  override def str: String = x + "!" // переопределение родительской функции
+  def chooseMax(abc: SomeOtherClass): SomeOtherClass = {
+    if (x.length < abc.x) abc else this // 'this' - ключевое слово обращения к экземпляру данного класса
+  }
 }
 ```
 ### object
