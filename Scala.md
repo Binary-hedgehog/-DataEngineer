@@ -35,7 +35,9 @@
 ``` Scala
 class SomeClass
 val a = new SomeClass() // без () в Scala 3
-class SomeOtherClass(val x: String) extends SomeClass 
+class SomeOtherClass(x: String) extends SomeClass {
+  require( x != "" ) // функция объекта Predef, которая автоматически импортируется в каждый пакет Scala
+}
 ```
 ### object
 
