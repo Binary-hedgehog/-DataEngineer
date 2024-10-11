@@ -66,23 +66,30 @@
 наследование?
 ### class
 * Классы - это шаблоны объектов
-``` Scala
-class TempClass1
-class TempClass2(y: Int)
-val a = new TempClass1() // Инициализация класса, в Scala 3 без ()
-
-class SomeClass {
-  def str: String = ""
-}
-class SomeOtherClass(val x: String) extends SomeClass { // 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)
-  require( x != "" ) // функция объекта Predef, которая устанавливает требования к инициализации класса переменной
-  override def str: String = x + "!" // переопределение родительской функции
-  def chooseMax(abc: SomeOtherClass): SomeOtherClass = {
-    if (x.length < abc.x.length) abc else this // 'this' - ключевое слово обращения к экземпляру данного класса
+   ``` Scala
+   // Создание класса
+   class TempClass1
+   class TempClass2(y: Int)
+   class SomeClass {
+    def str: String = ""
+   }
+   // Инициализация класса, в Scala 3 без ()
+   val a = new TempClass1() 
+   val b = new TempClass2(2)
+   
+  // Более интересный класс, с наследованием
+  class SomeOtherClass(val x: String) extends SomeClass { // 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)
+    // Устанавливаем требования к инициализации класса переменной 
+    require( x != "" ) // функция объекта Predef
+    // переопределение родительской функции
+    override def str: String = x + "!" 
+    // Используем экземпляр созданного класса
+    def chooseMax(abc: SomeOtherClass): SomeOtherClass = 
+      if (x.length < abc.x.length) abc else this // 'this' - ключевое слово обращения к экземпляру данного класса
+    // Вспомогательный конструктор, который позволяет инициализировать данный класс, например, через 2 переменные
+    def this(a: String, b:String) = this(a + b)
   }
-  def this(a: String, b:String) = this(a + b) // Вспомогательный конструктор, который позволяет инициализировать данный класс через 2 переменные
-}
-```
+   ```
 ### object
 
 ### trait
