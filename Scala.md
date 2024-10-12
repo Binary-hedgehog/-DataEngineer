@@ -102,7 +102,8 @@
 ## ФП
 * map, flatMap, filter, foldLeft, for comprehension, yeild
 * "Моноид" "Монада" "Композиция монад"
-## Option
+## Option,
+## Исключения
 ## 
 
 ## implicit
