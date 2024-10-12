@@ -72,6 +72,8 @@
    class TempClass2(y: Int)
    class SomeClass {
     def str: String = ""
+    // Пример инкапсуляции
+    private val s = 1
    }
    // Инициализация класса, в Scala 3 без ()
    val a = new TempClass1() 
