@@ -1,5 +1,14 @@
 # Подготовка к собеседованию по Scala
-
+## Оглавление
+[Go Back](#оглавление)
+---
+## Другие файлы
+* [Spark](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Spark.md)
+* [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)
+* [SQL](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/SQL.md)
+* [Общая информация](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Common.md)
+* [Вопросы работодателю](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Questions%20for%20employer.md)
+---
 ## Типы переменных
 * Изменяемость
     * в Scala все переменные делятся на две подгруппы mutable и imutable - то есть изменяемые и неизменяемые
@@ -8,6 +17,7 @@
 * var - переменная данного типа инициализируется в начале работы программы и **может** изменяться
 * def - переменная данного типа инициализируется каждый раз при её вызове
 ---
+
 ## Типы данных
 ### Основные типы
 #### Числовые
