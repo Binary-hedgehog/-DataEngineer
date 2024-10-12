@@ -14,6 +14,7 @@
   + [Flink](#Flink)
   + [Хранение данных](#Хранение-данных)
   + [Форматы данных в BigData](#Форматы-данных-в-BigData)
+  + [ETL инструменты](#ETL-инструменты)
 ---
 ## Другие файлы
 * [Python](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Python.md)
@@ -606,6 +607,24 @@ spark.sql("select id, cube(id) as id_cube_sql_scala from test")
         * Можно разделить файлы без сканирования этих файлов на предмет наличия маркеров
         * Индексация блоков для каждого столбца
         * Генерация наиболее эффективного графа при оптимизации SQL-запросов
+### ETL инструменты
+* Инструменты ETL используют, когда нужно быстро перенести много разнородных данных. Такие решения автоматизируют процесс и экономят ресурсы, потому что вам не придётся создавать собственные конвейеры данных
+* Популярные ETL инструменты
+    * Astera
+    * Integrate
+    * Fivetran
+    * Talend
+    * Hevo Data
+    * Skyvia
+    * SAS Data Management
+    * Pentaho
+    * Stitch
+    * Blendo
+    * Airbyte
+    * Azure Data Factory
+    * Oracle Data Integrator
+    * Apache Airflow
+    * Portable.io
 ---
 # Источники
 [Go Back](#оглавление)
