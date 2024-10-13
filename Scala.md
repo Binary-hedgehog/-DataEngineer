@@ -158,7 +158,7 @@ class SomeClass {
   val s = 1
 }
 // Инициализация класса
-val a = new TempClass1()  // в Scala 3 можно без ()
+val a = new TempClass1
 val b = new TempClass2(2)
    
 class SomeOtherClass(val x: String) { // 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)
