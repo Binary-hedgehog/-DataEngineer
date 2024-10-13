@@ -230,6 +230,7 @@ trait A extends X with R { print("A") }
 trait H { print("H") }
 trait S extends H { print("S") }
 trait T extends R with H { print("T") }
+
 class B extends A with T with S { print("B") }
 new B // XRAHTSB
 ```
