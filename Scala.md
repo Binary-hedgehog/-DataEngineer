@@ -81,21 +81,16 @@ foo(args = "1")
 // Аргументы по умолчанию
 def bar(i: Int = 2) = println(i)
 bar() // 2
-// А это называется функциональное значение
-val a = bar
 ```
-* Когда функция без аргументов изменяет какие-либо внешние переменные своим вызовом (использует замыкания) стоит ставить пустые скобки `()`, в остальных же случаях их нужно опускать
+### Функциональные значения 
 ``` Scala
- class Temp {
-   private var count = 0
-   def inc(): Unit = count += 1
-   def getCount: Int = count
- }
-val t = new Temp()
-println(t.getCount) // 0
-t.inc()
-println(t.getCount) // 1
+def foo(x: Int, y: Int) = x + y
+val a = foo // Это называется функциональное значение
+// Использовать его можно, например, так
+val b = foo(_, 5)
+println(b(4)) // 9
 ```
+* Держим в уме, что оптимизация хвостовой рекурсии не работает с функциональными значениями, только непосредственно с функциями
 ### Замыкания
 * Замыкания - это когда функция может использовать и изменять переменные из внешней области видимости
 ``` Scala
@@ -109,6 +104,18 @@ println(foo(6)) // 10
 println(a)      // 4
 println(bar(3)) // 12
 ```
+* Когда функция без аргументов изменяет какие-либо внешние переменные своим вызовом (использует замыкания) стоит ставить пустые скобки `()`, в остальных же случаях их нужно опускать
+``` Scala
+ class Temp {
+   private var count = 0
+   def inc(): Unit = count += 1
+   def getCount: Int = count
+ }
+val t = new Temp()
+println(t.getCount) // 0
+t.inc()
+println(t.getCount) // 1
+```
 ### Каррирование
 * Это когда у функции появляется несколько списков аргументов
 * Соответственно мы можем последовально проициализировать `x`, а потом уже `y` (см. пример ниже)
@@ -121,62 +128,93 @@ def plus(x: Int)(y: Int) = x + y
 def plus(x: Int) = (y: Int) => x + y
 ```
 ### Хвостовая рекурсия
-### Функциональные значения?
 ---
 ## ООП
 [Go Back](#оглавление)
-наследование?
 ### Class
 * Классы - это шаблоны объектов
-   ``` Scala
-   // Создание класса
-   class TempClass1
-   class TempClass2(y: Int)
-   class SomeClass {
-    def str: String = ""
-    // Пример инкапсуляции
-    private val s = 1
-   }
-   // Инициализация класса, в Scala 3 без ()
-   val a = new TempClass1() 
-   val b = new TempClass2(2)
+``` Scala
+// Создание класса
+class TempClass1
+class TempClass2(y: Int)
+class SomeClass {
+  def str: String = ""
+  val s = 1
+}
+// Инициализация класса
+val a = new TempClass1()  // в Scala 3 можно без ()
+val b = new TempClass2(2)
    
-  // Более интересный класс, с наследованием
-  class SomeOtherClass(val x: String) extends SomeClass { // 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)
-    // Устанавливаем требования к инициализации класса переменной 
-    require( x != "" ) // функция объекта Predef
-    // переопределение родительской функции
-    override def str: String = x + "!" 
-    // Используем экземпляр созданного класса
-    def chooseMax(abc: SomeOtherClass): SomeOtherClass = 
-      if (x.length < abc.x.length) abc else this // 'this' - ключевое слово обращения к экземпляру данного класса
-    // Вспомогательный конструктор, который позволяет инициализировать данный класс, например, через 2 переменные
-    def this(a: String, b:String) = this(a + b)
-  }
-   ```
+class SomeOtherClass(val x: String) { // 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)
+  // Устанавливаем требования к инициализации класса переменной 
+  require( x != "" ) // функция объекта Predef
+  def str: String = x + "!" 
+  // Используем экземпляр созданного класса
+  def chooseMax(abc: SomeOtherClass): SomeOtherClass = 
+    if (x.length < abc.x.length) abc else this // 'this' - ключевое слово обращения к экземпляру данного класса
+  // Вспомогательный конструктор, который позволяет инициализировать данный класс, например, через 2 переменные
+  def this(a: String, b:String) = this(a + b)
+}
+```
 ### Object
 
 ### Trait
-### Case class
+* Зачастую используются для расширения функционала классов
+* Так как являются абстрактными - не могут быть проинициализированы
+* Ключевое отличие `trait` от `class` в том, что вызов `super` имеет динамическую, а не статическую привязку
+    * Это значит, что примешивание `trait` к классу не переопределяет его родительский класс
+* Примешанные трейты - это по сути миксины
 ### Abctract class
 * `abstract` указывает на то, что у класса могут быть абстрактные члены
     * Абстракнтные члены класса - объекты не имеющие конкретной реализации
     * Из-за этого невозможно создать экземпляр данного класса
 ``` Scala
- // Абстрактный класс
- abstract class Some {
-   // Абстрактный метод
-   def foo: List[String]
-   def len: Int = foo.length
- }
-
- new Some() // error
+// Абстрактный класс
+abstract class Some {
+  // Абстрактный метод
+  def foo: List[String]
+  def len: Int = foo.length
+}
+new Some() // error
 ```
 ### Наследование
+* В Scala нет множественого наследования, однако, можно подмешивать любое количество `trait` к классу
+    * В случае спорных ситуаций `trait` находящийся правее вступает в силу первым 
 * Что не наследуется
     * Приватные элементы суперкласса
     * Элемент суперкласса с таким же именем и параметрами, который реализован в подклассе
 `final def`, `final class`
+* У одного класса может быть только один суперкласс, но сколько угодно `trait`
+* Если суперкласс не задан, то им по умолчанию является `AnyRef`
+``` Scala
+abstract class e {
+  val a: Int
+  val b: Int = 2
+}
+class ff extends e {
+  val a = 2
+  override val b = 3
+}
+```
+* Разрешением того в какой последовательности будут вызываться методы в подмешенных `trait` существует **линеризация**
+#### Линеризация 
+* Пример работы линеризации в Scala
+``` Scala
+trait X { print("X") }
+trait R { print("R") }
+trait A extends X with R { print("A") }
+trait H { print("H") }
+trait S extends H { print("S") }
+trait T extends R with H { print("T") }
+class B extends A with T with S { print("B") }
+new B // XRAHTSB
+```
+* Начинаем разбирать зависимости класса `В` слева направо, а провалившись вовнутрь выписываем их справа налево
+   1. A -> R -> X
+   2. T -> H -> R
+   3. S -> H
+* Теперь мы собираем все зависимости начиная с 1ой идя справа налево и игнорируя дубли, тем самым получая `XRAHTS`
+### Case class
 ---
 ## ФП
 * map, flatMap, filter, foldLeft, for comprehension, yeild
@@ -215,3 +253,4 @@ def plus(x: Int) = (y: Int) => x + y
 ## Источники
 * https://github.com/Jarlakxen/Scala-Interview-Questions?tab=readme-ov-file#reactive-programming-questions
 * https://proglib.io/p/4-scala-questions
+* https://stackoverflow.com/questions/34242536/linearization-order-in-scala
