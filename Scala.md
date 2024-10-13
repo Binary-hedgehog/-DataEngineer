@@ -11,6 +11,7 @@
 + [ООП](#ООП)
     + [Class](#Class)
     + [Object](#object)
+        + [Объект компаньон](#Объект-компаньон)
     + [Trait](#trait)
     + [Abstract class](#Abstract-class)
     + [Наследование](#Наследование)
