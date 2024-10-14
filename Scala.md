@@ -240,6 +240,13 @@ class B extends A {
 trait C
 trait D
 class E extends B with C with D
+
+class F (x: Int) {
+  val a: Int = x
+}
+class G extends F(2) {
+  val b: Int = a + 1
+}
 ```
 * Для разрешения того в какой последовательности будут вызываться методы в подмешенных `trait` существует **линеризация**
 #### Линеризация 
