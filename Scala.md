@@ -162,16 +162,19 @@ class SomeClass {
 // Инициализация класса
 val a = new TempClass1
 val b = new TempClass2(2)
-   
-class SomeOtherClass(val x: String) { // 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)
+
+// 'val x' используется чтобы объявить переменную, к которой можно будет получать доступ извне класса (см. chooseMax)   
+class SomeOtherClass(val x: String) { 
   // Устанавливаем требования к инициализации класса переменной 
   require( x != "" ) // функция объекта Predef
-  def str: String = x + "!" 
+  // Создаем элементы класса
+  privat val a = 2 // Пример инкапсуляции
+  def str: String = x + "!"
+  // Вспомогательный конструктор, который позволяет инициализировать данный класс, например, через 2 переменные
+  def this(a: String, b:String) = this(a + b)
   // Используем экземпляр созданного класса
   def chooseMax(abc: SomeOtherClass): SomeOtherClass = 
     if (x.length < abc.x.length) abc else this // 'this' - ключевое слово обращения к экземпляру данного класса
-  // Вспомогательный конструктор, который позволяет инициализировать данный класс, например, через 2 переменные
-  def this(a: String, b:String) = this(a + b)
 }
 ```
 ### Object
