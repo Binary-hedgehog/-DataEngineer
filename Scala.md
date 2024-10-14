@@ -235,7 +235,7 @@ abstract class A {
 }
 class B extends A {
   val a = 2  // В данном классе должно быть определение обстрактной переменной a
-  override val b = 3 // Переопределяем переменную b
+  override val b = super.b + 3 // Переопределяем переменную b
 }
 trait C
 trait D
