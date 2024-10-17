@@ -7,6 +7,11 @@
   + [Оптимизация в Spark](#Оптимизация-в-Spark)
   + [Joins](#Joins)
   + [Ect](#Ect)
+      + [Отличия Spark и PySpark](#Отличия-Spark-и-PySpark)
+      + [MapReduce как аналог Spark](#MapReduce-как-аналог-Spark)
+      + [Файловые системы, поддерживаемые Spark](#Файловые-системы,-поддерживаемые-Spark)
+      + [Udf](#Udf)
+      + [Кэширование](#Кэширование)
 + [Оркестраторы](#оркестраторы)
 + [Прочие полезности Big Data](#прочие-полезности)
   + [Hadoop](#hadoop)
@@ -294,6 +299,16 @@ spark._jvm.com.databricks.solutions.udf.Functions.registerFunc(sqlContext._jsqlC
 spark.sql("select id, cube(id) as id_cube_sql_scala from test")
 
 ```
+#### Кэширование
+* Существует основная функция кэширования `persist()` или более простой её аналог `cache()`
+    * У `cache()` уровень хранения задан по умолчанию: `MEMORY_ONLY` для RDD, `MEMORY_AND_DISK` для DataFrame и DataSet
+* Уровни хранения
+    * `MEMORY_ONLY` / `MEMORY_ONLY_SER` (`MEMORY_ONLY_2` / `MEMORY_ONLY_SER_2`) - кладет данные в общую кучу, если места не хватит, то при повторном обращении к данным будет проведен дополнительный перерасчет
+    * `MEMORY_AND_DISK` / `MEMORY_AND_DISK_SER` (`MEMORY_AND_DISK_2` / `MEMORY_AND_DISK_SER_2`) - кладет данные в общую кучу, если места не хватит, то складывает их на диск, и забирает оттуда при необходимости
+    * `DISK_ONLY` (`DISK_ONLY_2`, `DISK_ONLY_3`) - сохраняет данные на диск
+    * `OFF_HEAP` - вне кучи, сегмент за пределами JVM. Надо дополнительно включать в Spark
+    * `_2` / `_3` - означает что Spark будет реплицировать данные на 2х или 3х нодах (узлах кластера)
+    * `_SER` - означает Java сериализацию данных
 ---
 ## Оркестраторы
 [Go Back](#оглавление)
