@@ -260,7 +260,6 @@ finally:
                 def b(self):
                    pass
             ```
-            
 ### Магические методы
 * Магическими метода называют методы, имена которых начинаются и заканчиваются двойным подчеркиванием
 * Магические они потому, что почти никогда не вызываются явно. Их вызывают встроенные функции или синтаксические конструкции. Например, функция `len()` вызывает метод `__len__()`
@@ -317,6 +316,28 @@ class Descriptor:
 
 class A:
    x = Descriptor()
+
+a = A()
+# a.x - Это будет ошибка, так как атрибут __value на данный момент еще не определен
+```
+* А еще есть необязательный метод `__set_name__` благодаря которому можно задать значение по умолчанию
+``` Python
+class Descriptor:
+    def __set_name__(self, owner, name):
+        self.private_name = '_' + name
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.private_name, None)
+
+    def __set__(self, instance, value):
+        setattr(instance, self.private_name, value)
+
+
+class B:
+    x = Descriptor()
+
+a = A()
+a.x
 ```
 * Дескрипторы могут решить проблему Python с инкапсуляцией
 * `property()` как раз работает как дескриптор
