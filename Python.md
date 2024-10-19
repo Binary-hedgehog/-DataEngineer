@@ -302,7 +302,7 @@ class NowMixin(object):
 ---
 ## Дескрипторы
 [Go Back](#оглавление)
-* Дескриптор - это объект, который позволяет опредлеить инкапсуляцию атрибута другого класса
+* Дескриптор - это объект, с помощью которого можно контролировать доступ к атрибутам
 * Это происходит через определение методов `__get__`, `__set__`, и `__delete__` у дескриптора
 ``` Python
 class Descriptor:
@@ -317,55 +317,8 @@ class Descriptor:
 
 class A:
    x = Descriptor()
-
-
 ```
-
-* Это объектовый атрибут с поведением, определяемым методами в его классе, или если проще - это способ, с помощью которого объект может контролировать доступ к его атрибутам, используя специально определенные методы `__get__`, `__set__`, и `__delete__`
-* `__get__`
-    * Вызывается, когда значение атрибута извлекается
-    * Принимает два агрумента: `self` и `instance`, где `instance` - это экземпляр объекта, через который доступен дескриптор, или `None`, если обращение идет через класс
-``` Python
-class Descriptor:
-    def __get__(self, instance, owner):
-        return 'значение'
-
-class MyClass:
-    attr = Descriptor()
-
-my_object = MyClass()
-print(my_object.attr)  # выведет 'значение'
-```
-* `__set__`
-    * Позволяет управлять изменением значения атрибута
-    * Принимает три аргумента: `self`, `instance` и `value`, где `value` - это новое значение атрибута
-``` Python
-class Descriptor:
-    def __set__(self, instance, value):
-        print(f"Установка значения {value}")
-        self.__value = value
-
-class MyClass:
-    attr = Descriptor()
-
-my_object = MyClass()
-my_object.attr = 10  # выведет 'Установка значения 10'
-```
-* `__delete__` вызывается при удалении атрибута с использованием оператора
-  * Принимает два агрумента: `self` и `instance`
-``` Python
-class Descriptor:
-    def __delete__(self, instance):
-        print("Удаление атрибута")
-        del self.__value
-
-class MyClass:
-    attr = Descriptor()
-
-my_object = MyClass()
-del my_object.attr  # выведет 'Удаление атрибута'
-```
-* Дескрипторы помогают решить проблему Python с инкапсуляцией
+* Дескрипторы могут решить проблему Python с инкапсуляцией
 * `property()` как раз работает как дескриптор
 * Тут можно посмотреть подробнее - https://habr.com/ru/companies/otus/articles/801595/
 ---
