@@ -192,9 +192,6 @@
 * Фильтровать неиспользуемые данные
 * Стараться не использовать UDF (особенно в PySpark) так как они не оптимизируются
 ### Joins
-https://docs.aws.amazon.com/prescriptive-guidance/latest/spark-tuning-glue-emr/using-join-hints-in-spark-sql.html
-https://habr.com/ru/companies/otus/articles/556722/
-https://blog.knoldus.com/advanced-spark-sql-joins-an-optimization-technique/
 [Go Back](#оглавление)
 * Справочная информация
     * Self-join в SQL – это тип операции соединения, при которой таблица объединяется сама с собой
@@ -713,4 +710,5 @@ spark.sql("select id, cube(id) as id_cube_sql_scala from test")
 * https://habr.com/ru/articles/258443/
 * https://bigdataschool.ru/blog/broadcast-join-in-spark-sql-and-other-hints-example.html
 * https://sparkbyexamples.com/spark/spark-rdd-vs-dataframe-vs-dataset/
+* https://docs.aws.amazon.com/prescriptive-guidance/latest/spark-tuning-glue-emr/using-join-hints-in-spark-sql.html
 
