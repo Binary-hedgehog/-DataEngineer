@@ -18,6 +18,7 @@
     + [Наследование](#Наследование)
         + [Линеризация](#Линеризация)
     + [Case class](#case-class)
++ [Паттерн матчинг](#Паттерн-матчинг)
 ---
 ## Другие файлы
 * [Spark](https://github.com/Binary-hedgehog/-DataEngineer/blob/main/Spark.md)
@@ -294,6 +295,27 @@ object P {
 println(P(1, "sss")) // P(2,Sss)
 ```
 ---
+## Паттерн матчинг
+* Матчинг происходит следующим образом: значение `some` проверяется на соответствие паттренам в порядке написания
+* При первом же соответствии выполняется часть после `=>`, на этом матчинг окончен
+``` Scala
+some match { 
+    case someCase => someExpr
+    case someOtherCase => someOtherExpr
+    case _ => some   // '_' обозначает все остальные варианты 
+```
+* Типизированные паттерны
+``` Scala
+some match { 
+    case s: String => someExpr
+    case m: Map[_, _] => someOtherExpr
+    case m1: Map[Int, Int] => 123 // А вот тут мы получим ошибку так как внутренние типы затрутся
+    case ar: Array[String] => 321 // Массивы исключение из правила выше
+    case _ => some   
+```
+
+
+
 ---
 дальше живут драконы )))
 ---
